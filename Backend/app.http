@@ -1,2 +1,44 @@
 ###
 GET http://localhost:8000/api/
+
+// users
+###
+GET http://localhost:8000/api/users/
+
+// user create user
+###
+POST http://localhost:8000/api/users
+Content-Type: application/json
+
+{
+    "fullName": "Tildah Malinda",
+    "email": "tildah@malinda.com",
+    "contactPhone": "+2234567890",
+    "address": "123 Main St, New York, NY 10001",
+    "location": "Nairobi",
+    "street": "Main St",
+    "dateOfBirth": "1990-01-01",
+    "gender": "Female"
+}
+
+// user update user
+###
+PUT http://localhost:8000/api/users/1
+Content-Type: application/json
+
+{
+
+    "fullName": "John Doe",
+    "email": "john.doe@example.com",
+    "contactPhone": "1234567890",
+    "address": "123 Main St",
+    "role": "user",
+    "location": "New York",
+    "street": "Nain St",
+    "dateOfBirth": "1990-01-01 00:00:00",
+    "gender": "male"
+}
+
+// user delete user
+###
+DELETE http://localhost:8000/api/users/5

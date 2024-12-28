@@ -11,6 +11,9 @@ import { HTTPException } from "hono/http-exception";
 import { trimTrailingSlash } from "hono/trailing-slash";
 import { readFile } from "fs/promises";
 
+//routes
+import { userRouter } from "./users/users.router";
+
 const app = new Hono().basePath("/api");
 
 const { printMetrics, registerMetrics } = prometheus();
@@ -21,9 +24,9 @@ const customeTimeoutException = new HTTPException(408, {
 
 // in-built middlewares
 app.use(logger()); // logs request and response data to console
-app.use(csrf()); // adds csrf token to response header and checks csrf token in request header and prevent csrf attack
+// app.use(csrf()); // adds csrf token to response header and checks csrf token in request header and prevent csrf attack
 app.use(trimTrailingSlash()); // removes trailing slash from request url
-
+// app.use("/api/*", cors()); // adds cors headers to response
 app.use(
   cors({
     origin: "*",
@@ -32,9 +35,8 @@ app.use(
   })
 ); // adds cors headers to response
 
-app.use("*", printMetrics); // adds prometheus metrics to /metrics route
+// app.use("*", printMetrics); // adds prometheus metrics to /metrics route
 app.use("*", registerMetrics); // adds prometheus metrics to /metrics route
-
 app.use("/", timeout(10000, customeTimeoutException)); // adds timeout to all routes
 
 app.get("/timeout", async (c) => {
@@ -55,6 +57,9 @@ app.get("/", async (c) => {
 app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
+
+//============routes================
+app.route("/", userRouter);
 
 serve({
   fetch: app.fetch,
