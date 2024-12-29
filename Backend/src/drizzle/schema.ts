@@ -264,8 +264,8 @@ export type TSBooking = typeof BookingsTable.$inferSelect;
 export type TIPayment = typeof PaymentsTable.$inferInsert;
 export type TSPayment = typeof PaymentsTable.$inferSelect;
 
-export type TIAuth = typeof AuthenticationTable.$inferInsert;
-export type TSAuth = typeof AuthenticationTable.$inferSelect;
+export type TIAuthentication = typeof AuthenticationTable.$inferInsert;
+export type TSAuthentication = typeof AuthenticationTable.$inferSelect;
 
 export type TISupportTicket = typeof SupportTicketsTable.$inferInsert;
 export type TSSupportTicket = typeof SupportTicketsTable.$inferSelect;

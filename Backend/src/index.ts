@@ -13,6 +13,10 @@ import { readFile } from "fs/promises";
 
 //routes
 import { userRouter } from "./users/users.router";
+import { authenticationRouter } from "./authentication/authentication.router";
+import { branchRouter } from "./branches/branches.router";
+import { fleetManagementRouter } from "./FleetManagement/FleetManagement.router";
+import { vehicleSpecificationsRouter } from "./vehicleSpecification/vehiclespec.router";
 
 const app = new Hono().basePath("/api");
 
@@ -24,7 +28,9 @@ const customeTimeoutException = new HTTPException(408, {
 
 // in-built middlewares
 app.use(logger()); // logs request and response data to console
+
 // app.use(csrf()); // adds csrf token to response header and checks csrf token in request header and prevent csrf attack
+
 app.use(trimTrailingSlash()); // removes trailing slash from request url
 // app.use("/api/*", cors()); // adds cors headers to response
 app.use(
@@ -60,6 +66,10 @@ app.get("/", (c) => {
 
 //============routes================
 app.route("/", userRouter);
+app.route("/", authenticationRouter);
+app.route("/", branchRouter);
+app.route("/", fleetManagementRouter);
+app.route("/", vehicleSpecificationsRouter);
 
 serve({
   fetch: app.fetch,

@@ -42,3 +42,36 @@ Content-Type: application/json
 // user delete user
 ###
 DELETE http://localhost:8000/api/users/5
+
+
+// ========Authentications=======
+// fetch all authenticaion entries
+###
+GET http://localhost:8000/api/authentication
+
+// create authentication entry
+###
+POST http://localhost:8000/api/authentication
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "password": "hashed_password_3",
+}
+
+
+// ========branches=======
+// fetch all branches
+###
+GET http://localhost:8000/api/branches
+
+
+// ========fleetmanagement=======
+// fetch all fleetmanagement
+###
+GET http://localhost:8000/api/fleet-management/
+
+//====vehiclespecifications====
+// fetch all vehiclespecifications
+###
+GET http://localhost:8000/api/vehicle-specifications/
