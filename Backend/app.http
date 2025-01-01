@@ -3,7 +3,7 @@ GET http://localhost:8000/api/
 
 // users
 ###
-GET http://localhost:8000/api/users/
+GET http://localhost:8000/api/users/ubuj
 
 // user create user
 ###
@@ -47,7 +47,7 @@ DELETE http://localhost:8000/api/users/5
 // ========Authentications=======
 // fetch all authenticaion entries
 ###
-GET http://localhost:8000/api/authentication
+GET http://localhost:8000/api/authentication/999
 
 // create authentication entry
 ###
@@ -63,7 +63,7 @@ Content-Type: application/json
 // ========branches=======
 // fetch all branches
 ###
-GET http://localhost:8000/api/branches
+GET http://localhost:8000/api/branches/
 
 
 // ========fleetmanagement=======
@@ -74,4 +74,25 @@ GET http://localhost:8000/api/fleet-management/
 //====vehiclespecifications====
 // fetch all vehiclespecifications
 ###
-GET http://localhost:8000/api/vehicle-specifications/
+GET http://localhost:8000/api/vehicle-specifications/5
+
+//====vehicles====
+// fetch all vehicles
+###
+GET http://localhost:8000/api/vehicles/
+
+//=====support-ticket=======
+###
+GET http://localhost:8000/api/support-tickets/2
+
+###
+GET http://localhost:8000/api/support-tickets/user/5
+
+
+//=====bookings=======
+// fetch all bookings
+###
+GET http://localhost:8000/api/bookings-branch-vehicle/
+
+###
+GET http://localhost:8000/api/bookings/5

@@ -17,6 +17,9 @@ import { authenticationRouter } from "./authentication/authentication.router";
 import { branchRouter } from "./branches/branches.router";
 import { fleetManagementRouter } from "./FleetManagement/FleetManagement.router";
 import { vehicleSpecificationsRouter } from "./vehicleSpecification/vehiclespec.router";
+import { vehiclesRouter } from "./vehicles/vehicles.router";
+import { supportTicketsRouter } from "./support/support.router";
+import { bookingsRouter } from "./bookings/booking.router";
 
 const app = new Hono().basePath("/api");
 
@@ -70,6 +73,9 @@ app.route("/", authenticationRouter);
 app.route("/", branchRouter);
 app.route("/", fleetManagementRouter);
 app.route("/", vehicleSpecificationsRouter);
+app.route("/", vehiclesRouter);
+app.route("/", supportTicketsRouter);
+app.route("/", bookingsRouter);
 
 serve({
   fetch: app.fetch,
