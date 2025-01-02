@@ -4,7 +4,7 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./",
     "strict": true,
     "verbatimModuleSyntax": false,
     "skipLibCheck": true,
@@ -12,8 +12,9 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["node"],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
+    "lib": ["esnext", "dom"]
   },
-  "include": ["src/**/*", "src/index.ts"],
+  "include": ["src/**/*", "*.ts", "src/index.ts"],
   "exclude": ["node_modules", "dist"]
 }

@@ -118,7 +118,7 @@ export const createPaymentController = {
         default:
           console.log(`Unhandled event type: ${event.type}`);
       }
-      return c.json({ received: true });
+      return c.json({ received: true }, 200);
     } catch (error: any) {
       console.error("Error handling webhook", error);
       return c.json({ success: false, error: "Failed to handle webhook" }, 400);

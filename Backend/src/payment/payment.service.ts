@@ -133,7 +133,8 @@ export const createPaymentService = async () => {
         currency: "usd",
         metadata: { booking_id: bookingId.toString() },
       });
-
+      console.log("Frontend URL: ", process.env.FRONTEND_URL);
+      console.log("Session URL: ", session.url);
       // update booking status
       await db
         .update(BookingsTable)
@@ -161,7 +162,7 @@ export const createPaymentService = async () => {
       //handle possible null value for session.amount_total
       const amountTotal = session.amount_total;
       if (amountTotal === null) {
-        throw new Error("Sssion amount_total is null");
+        throw new Error("Session amount_total is null");
       }
 
       // update booking status
