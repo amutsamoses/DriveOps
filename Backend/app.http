@@ -47,7 +47,7 @@ DELETE http://localhost:8000/api/users/5
 // ========Authentications=======
 // fetch all authenticaion entries
 ###
-GET http://localhost:8000/api/authentication/999
+GET http://localhost:8000/api/authentication/4
 
 // create authentication entry
 ###

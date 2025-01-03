@@ -21,6 +21,7 @@ import { vehiclesRouter } from "./vehicles/vehicles.router";
 import { supportTicketsRouter } from "./support/support.router";
 import { bookingsRouter } from "./bookings/booking.router";
 import { paymentRouter } from "./payment/payment.router";
+import authRouter from "./auth/auth.router";
 
 const app = new Hono().basePath("/api");
 
@@ -78,6 +79,7 @@ app.route("/", vehiclesRouter);
 app.route("/", supportTicketsRouter);
 app.route("/", bookingsRouter);
 app.route("/", paymentRouter);
+app.route("/", authRouter);
 
 serve({
   fetch: app.fetch,
