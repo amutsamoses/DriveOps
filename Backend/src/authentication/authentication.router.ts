@@ -8,21 +8,46 @@ import {
 } from "./authentication.controller";
 import { zValidator } from "@hono/zod-validator";
 import { authenticationSchema } from "../validator";
+import {
+  adminOrUserRoleAuth,
+  adminRoleAuth,
+  userRoleAuth,
+} from "../middleware/bearAuth";
 
 export const authenticationRouter = new Hono();
 
-authenticationRouter.get("/authentication", listAllAuthenticationController);
+// GET all authentication - /api/authentication
+authenticationRouter.get(
+  "/authentication",
+  adminRoleAuth,
+  listAllAuthenticationController
+);
+
+// GET a single authentication entry by user ID - /api/auth/:userId
 authenticationRouter.get(
   "/authentication/:userId",
+  adminRoleAuth,
   getAuthenticationByIdController
 );
-authenticationRouter.post("/authentication", createAuthenticationController);
+
+// POST create a new authentication entry - /api/auth
+authenticationRouter.post(
+  "/authentication",
+  adminRoleAuth,
+  createAuthenticationController
+);
+
+// PUT update an authentication entry by user ID - /api/auth/:userId
 authenticationRouter.put(
   "/authentication/:userId",
+  adminRoleAuth,
   updateAuthenticationController
 );
+
+// DELETE an authentication entry by user ID - /api/auth/:userId
 authenticationRouter.delete(
   "/authentication/:userId",
+  adminRoleAuth,
   deleteAuthenticationController
 );
 
@@ -33,6 +58,7 @@ authenticationRouter.post(
       return c.json(results.error, 400);
     }
   }),
+  adminRoleAuth,
   createAuthenticationController
 );
 

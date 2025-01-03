@@ -5,7 +5,7 @@ import {
   createFleetManagementService,
   updateFleetManagementService,
   deleteFleetManagementService,
-} from "./FleetManage.service";
+} from "./FleetManagement.service";
 
 export const listFleetManagementController = async (c: Context) => {
   try {
