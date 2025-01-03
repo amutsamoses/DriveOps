@@ -47,7 +47,7 @@ DELETE http://localhost:8000/api/users/5
 // ========Authentications=======
 // fetch all authenticaion entries
 ###
-GET http://localhost:8000/api/authentication/4
+GET http://localhost:8000/api/authentication/
 
 // create authentication entry
 ###
@@ -146,4 +146,35 @@ Content-Type: application/json
     "paymentStatus": "pending",
     "paymentMethod": "credit_card",
     "transactionId": "ref_1234567890"
+}
+
+//========Authentications and Authorization=======
+
+// register
+###
+POST http://localhost:8000/api/register
+Content-Type: application/json
+
+{
+    "fullName": "Moses Amutsa",
+    "email": "amutsamoses@gmail.com",
+    "contactPhone": "+254712345678",
+    "address": "Kutus, Kenya",
+    "password": "mypassword123",
+    "location": "Nairobi",
+    "street": "Main St",
+    "dateOfBirth": "1990-01-01",
+    "gender": "male",
+    "role": "admin"
+}
+
+
+// login
+###
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+    "email": "amutsamoses@gmail.com",
+    "password": "mypassword123"
 }

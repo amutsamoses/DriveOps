@@ -7,7 +7,7 @@ export const authRouter = new Hono();
 
 authRouter.post("/register", registerUserController);
 authRouter.post(
-  "/ogin",
+  "/login",
   zValidator("json", loginUserSchema, (result, c) => {
     if (!result.success) {
       return c.json(result.error, 400);

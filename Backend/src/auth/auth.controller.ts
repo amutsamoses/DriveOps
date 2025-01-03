@@ -60,8 +60,17 @@ export const loginUserController = async (c: Context) => {
 
     // if user does not exist
     if (!userExists) {
+      console.log("User Exists Data:", JSON.stringify(userExists, null, 2));
+
+      console.warn("User not found for email:", email);
       return c.json({ message: "User not found" }, 404);
     }
+
+    console.log(
+      "User's hashed password from DB:",
+      userExists.authentication.password
+    );
+    console.log("Provided password for comparison:", password);
 
     // check if password is correct using bcrypt
     const passwordMatch = await bycrpt.compare(
@@ -70,6 +79,7 @@ export const loginUserController = async (c: Context) => {
     );
 
     if (!passwordMatch) {
+      console.warn("Password mismatch provided by user", userExists.email);
       return c.json({ message: "Incorrect password" }, 401);
     }
 

@@ -2,12 +2,15 @@ import db from "../drizzle/db";
 import { UsersTable, AuthenticationTable } from "../drizzle/schema";
 import { sql } from "drizzle-orm";
 import { z } from "zod";
+import bcrypt from "bcrypt";
 
 // defining a zod schema for user registration data
 const UserRegistrationSchema = z.object({
   fullName: z.string(),
   email: z.string().email(),
-  contactPhone: z.string().min(15).max(15),
+  contactPhone: z
+    .string()
+    .min(10, { message: "Phone number must be at least 10 characters" }),
   address: z.string(),
   role: z.enum(["admin", "user"]).optional().default("user"),
   password: z.string().min(8),
@@ -111,23 +114,8 @@ export const userLoginService = async (
       },
     },
   });
+  console.log("Searching for user with email:", email);
+  console.log("Database result:", result);
 
-  // ensure the results are logged in or null
-  if (!result) {
-    return null;
-  }
-
-  // check if the password is correct
-  if (result.authentication.password !== password) {
-    return null;
-  }
-
-  return {
-    userId: result.userId,
-    email: result.email,
-    fullName: result.fullName,
-    role: result.role,
-    authentication: result.authentication,
-    bookings: result.bookings || [],
-  };
+  return result || null;
 };
