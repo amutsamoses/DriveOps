@@ -4,7 +4,6 @@
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
     "seed": "ts-node src/drizzle/seed.ts",
-    "test": "mocha --require ts-node/register/transpile-only test/user.controller.test.ts test/another_test_file.test.ts",
     "build": "tsc",
     "start": "node dist/index.js",
     "gen": "drizzle-kit generate",

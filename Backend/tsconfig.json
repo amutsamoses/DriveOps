@@ -12,10 +12,10 @@
     "esModuleInterop": true,
     "baseUrl": ".", // Base directory to resolve non-relative module names
     "forceConsistentCasingInFileNames": true,
-    "types": ["node", "mocha", "chai", "jest", "sinon"],
+    "types": ["node"],
     "lib": ["esnext"],
     "paths": { "*": ["./src/*"] } // Path mapping for module resolution
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "test", "coverage"]
+  "exclude": ["node_modules", "dist"]
 }
