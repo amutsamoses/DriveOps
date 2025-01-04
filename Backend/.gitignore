@@ -26,3 +26,8 @@ lerna-debug.log*
 
 # misc
 .DS_Store
+
+
+# ignore all .js files in the root of the project and dist folder
+*.js
+dist/*.js

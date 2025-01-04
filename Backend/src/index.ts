@@ -5,7 +5,6 @@ import { logger } from "hono/logger";
 import { csrf } from "hono/csrf";
 import { timeout } from "hono/timeout";
 import { cors } from "hono/cors";
-import { html, raw } from "hono/html";
 import { prometheus } from "@hono/prometheus";
 import { HTTPException } from "hono/http-exception";
 import { trimTrailingSlash } from "hono/trailing-slash";
@@ -34,7 +33,7 @@ const customeTimeoutException = new HTTPException(408, {
 // in-built middlewares
 app.use(logger()); // logs request and response data to console
 
-// app.use(csrf()); // adds csrf token to response header and checks csrf token in request header and prevent csrf attack
+app.use(csrf()); // adds csrf token to response header and checks csrf token in request header and prevent csrf attack
 
 app.use(trimTrailingSlash()); // removes trailing slash from request url
 // app.use("/api/*", cors()); // adds cors headers to response

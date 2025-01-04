@@ -6,7 +6,7 @@ import {
   getUserByIdController,
   updateUserController,
   deleteUserController,
-} from "./user.controller";
+} from "./users.controller";
 import { adminOrUserRoleAuth } from "../middleware/bearAuth";
 
 export const userRouter = new Hono();
